@@ -1,0 +1,47 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+    <id>assembly</id>
+    <formats><!-- 包的类型 -->
+        <format>tar.gz</format>
+    </formats>
+    <!-- 这个节点的意思是要把子目录放到最前面还是在子目录上加主目录 -->
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <fileSets>
+    <!-- 关于linux中权限问题：
+    通常用三个数字去表示文件的读取，写入，执行的权限：1表示执行，2表示写入，4表示读取
+    如0644：0表示目录文件，6表示：4+2就是文件属主的读取和写入权限，4表示：4，属组的读取权限，4表示：4，其他用户的读取权限 -->
+        <fileSet>
+            <directory>src/main/assembly/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <directoryMode>0755</directoryMode><!-- 所有目录的权限都是755 -->
+            <includes>
+                <include>**/*</include>
+            </includes>
+            <fileMode>0744</fileMode><!-- 所有文件的权限 -->
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+        <!-- <fileSet>
+            <directory>target/classes</directory>
+            <outputDirectory>conf</outputDirectory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+            <excludes>
+                <exclude>**/*.class</exclude>
+            </excludes>
+        </fileSet> -->
+        <fileSet>
+            <directory>target</directory>
+            <outputDirectory>logs</outputDirectory>
+            <excludes>
+                <exclude>**/*</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>  
+        </dependencySet>
+    </dependencySets>    
+</assembly>
