@@ -45,11 +45,11 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<!-- 要用maven-assembly -->
-			<!-- <plugin>
+			<plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-                    not append assembly id in release file name
-                    默认为true，如果true的话，包的结尾会跟着assembly.xml的id
+                    <!-- not append assembly id in release file name -->
+                    <!-- 默认为true，如果true的话，包的结尾会跟着assembly.xml的id -->
                     <appendAssemblyId>false</appendAssemblyId>
                     <descriptors>描述文件
                         <descriptor>src/main/assembly/assembly.xml</descriptor>
@@ -57,15 +57,15 @@
                 </configuration>
 
                 <executions>
-                    <execution>执行器，执行描述文件
+                    <execution><!-- 执行器，执行描述文件 -->
                         <id>make-assembly</id>
-                        <phase>package</phase>绑定到package的生命周期阶段
+                        <phase>package</phase><!-- 绑定到package的生命周期阶段 -->
                         <goals>
-                            <goal>single</goal>只执行一次
+                            <goal>single</goal><!-- 只执行一次 -->
                         </goals>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
 		</plugins>
 	</build>
 	<repositories>
