@@ -12,6 +12,6 @@ public class IndexController {
 
 	@RequestMapping("/hostName")
 	public String getHostName() throws Exception {
-		return InetAddress.getLocalHost().getHostName();
+		return "test1===" + InetAddress.getLocalHost().getHostName();
 	}
 }
